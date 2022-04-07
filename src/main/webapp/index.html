@@ -14,9 +14,26 @@ width:960px;
     padding:50px; 
     background-color:orange;
 }
-
-
 </style>
+
+
+<script>
+function checkForm(form){
+	//validation fails if the input is blank
+	if(form.item.value == "" ){
+	alert("Please provide information for the item name!");
+	form.item.focus();
+	return false; 
+	}
+	if(form.itemNumber.value == "" || isNaN(form.itemNumber.value)){
+	alert("Please provide information a numeric charcter for the item number!");
+	form.itemNumber.focus();
+	return false; 
+	}
+return true; 
+
+}
+</script>
 
 </head>
 <body id="container">
@@ -24,7 +41,7 @@ width:960px;
 <h1>Distribution Center Home Page</h1>
 <h2>Welcome, fellow distribution worker!</h2>
 <h2>Please enter a item you would like to input into the system to ship to a dealership.</h2>
-<form action = "AddItemServlet" method="post">
+<form action = "AddItemServlet" method="post" onsubmit="return checkForm(this);">
 Item Number:<input type="text" name="itemNumber"><br/>
 Item:<input type="text" name="item"><br/>
 <input type="submit" value="Add Item">
